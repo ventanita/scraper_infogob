@@ -38,8 +38,8 @@ def data_busqueda(dni):
         "ctl00$ContentPlaceHolder1$txt_paterno": "",
         "ctl00$ContentPlaceHolder1$txt_materno": "",
         "ctl00$ContentPlaceHolder1$txt_dni": dni,
-        "ctl00$ContentPlaceHolder1$ImgBtnAceptar.x": 35,
-        "ctl00$ContentPlaceHolder1$ImgBtnAceptar.y": 6,
+        "ctl00$ContentPlaceHolder1$ImgBtnAceptar.x": 0,
+        "ctl00$ContentPlaceHolder1$ImgBtnAceptar.y": 0,
     }
 
 
