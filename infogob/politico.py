@@ -50,6 +50,7 @@ def get_id_pol(dni):
     res = req.post(url_base, data=form_data)
     soup = BeautifulSoup(res.text)
     tabla = soup.find("table", class_="mygrid")
+    assert tabla, "Mala peticion"
     rows = tabla.find_all("tr")
     if len(rows) == 1:
         return None
