@@ -86,13 +86,13 @@ def get_dic_links(soup_ficha):
 def get_dic_datos(soup_ficha):
     fields = soup_ficha.find(id="generales-dato")
     return {
-        "dni": fields.find(id="ctl00_ContentPlaceHolder1_cabecera1_LblDni").string,
-        "nombre": fields.find(id="ctl00_ContentPlaceHolder1_cabecera1_LblNombres").string,
-        "nacimiento": fields.find(id="ctl00_ContentPlaceHolder1_cabecera1_LblFecNacimiento").string,
+        "dni": unicode(fields.find(id="ctl00_ContentPlaceHolder1_cabecera1_LblDni").string),
+        "nombre": unicode(fields.find(id="ctl00_ContentPlaceHolder1_cabecera1_LblNombres").string),
+        "nacimiento": unicode(fields.find(id="ctl00_ContentPlaceHolder1_cabecera1_LblFecNacimiento").string),
         "residencia": {
-            "region": fields.find(id="ctl00_ContentPlaceHolder1_cabecera1_LblRegion").string,
-            "provincia": fields.find(id="ctl00_ContentPlaceHolder1_cabecera1_LblProvincia").string,
-            "distrito": fields.find(id="ctl00_ContentPlaceHolder1_cabecera1_LblDistrito").string,
+            "region": unicode(fields.find(id="ctl00_ContentPlaceHolder1_cabecera1_LblRegion").string),
+            "provincia": unicode(fields.find(id="ctl00_ContentPlaceHolder1_cabecera1_LblProvincia").string),
+            "distrito": unicode(fields.find(id="ctl00_ContentPlaceHolder1_cabecera1_LblDistrito").string),
         }
     }
 
