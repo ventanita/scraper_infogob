@@ -38,8 +38,8 @@ def data_busqueda(dni):
         "ctl00$ContentPlaceHolder1$txt_paterno": "",
         "ctl00$ContentPlaceHolder1$txt_materno": "",
         "ctl00$ContentPlaceHolder1$txt_dni": dni,
-        "ctl00$ContentPlaceHolder1$ImgBtnAceptar.x": 35,
-        "ctl00$ContentPlaceHolder1$ImgBtnAceptar.y": 6,
+        "ctl00$ContentPlaceHolder1$ImgBtnAceptar.x": 0,
+        "ctl00$ContentPlaceHolder1$ImgBtnAceptar.y": 0,
     }
 
 
@@ -50,6 +50,7 @@ def get_id_pol(dni):
     res = req.post(url_base, data=form_data)
     soup = BeautifulSoup(res.text)
     tabla = soup.find("table", class_="mygrid")
+    assert tabla, "Mala peticion"
     rows = tabla.find_all("tr")
     if len(rows) == 1:
         return None
@@ -85,13 +86,13 @@ def get_dic_links(soup_ficha):
 def get_dic_datos(soup_ficha):
     fields = soup_ficha.find(id="generales-dato")
     return {
-        "dni": fields.find(id="ctl00_ContentPlaceHolder1_cabecera1_LblDni").string,
-        "nombre": fields.find(id="ctl00_ContentPlaceHolder1_cabecera1_LblNombres").string,
-        "nacimiento": fields.find(id="ctl00_ContentPlaceHolder1_cabecera1_LblFecNacimiento").string,
+        "dni": unicode(fields.find(id="ctl00_ContentPlaceHolder1_cabecera1_LblDni").string),
+        "nombre": unicode(fields.find(id="ctl00_ContentPlaceHolder1_cabecera1_LblNombres").string),
+        "nacimiento": unicode(fields.find(id="ctl00_ContentPlaceHolder1_cabecera1_LblFecNacimiento").string),
         "residencia": {
-            "region": fields.find(id="ctl00_ContentPlaceHolder1_cabecera1_LblRegion").string,
-            "provincia": fields.find(id="ctl00_ContentPlaceHolder1_cabecera1_LblProvincia").string,
-            "distrito": fields.find(id="ctl00_ContentPlaceHolder1_cabecera1_LblDistrito").string,
+            "region": unicode(fields.find(id="ctl00_ContentPlaceHolder1_cabecera1_LblRegion").string),
+            "provincia": unicode(fields.find(id="ctl00_ContentPlaceHolder1_cabecera1_LblProvincia").string),
+            "distrito": unicode(fields.find(id="ctl00_ContentPlaceHolder1_cabecera1_LblDistrito").string),
         }
     }
 
